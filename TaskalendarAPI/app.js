@@ -10,11 +10,10 @@ const indexRoutes = require('./routes/indexRoutes');
 const userRoutes = require('./routes/userRoutes');
 
 const app = express();
-const ATLAS_URI='mongodb://taskalendar:Y!m%40z13ar$C%40n@taskalendar-shard-00-00-ra9ii.azure.mongodb.net:27017,taskalendar-shard-00-01-ra9ii.azure.mongodb.net:27017,taskalendar-shard-00-02-ra9ii.azure.mongodb.net:27017/test?ssl=true&replicaSet=Taskalendar-shard-0&authSource=admin&retryWrites=true';
-const LOCAL_URI='mongodb://localhost:27017/TaskalendarDB';
+const CONFIG=require('./config.json');
 
 //MONGOOSE
-mongoose.connect(LOCAL_URI,{ useNewUrlParser: true })
+mongoose.connect(CONFIG.CONN_URI,{ useNewUrlParser: true })
     .then(() => console.log('mongodb connected'))
     .catch((err) => console.log(err));
 //Bodyparser
