@@ -1,0 +1,383 @@
+/*
+    container
+*/
+
+.container{
+    display: grid;
+    grid-template-columns: 1.3fr 7fr;
+    grid-template-areas: "sidebar container";
+    height: calc(100% - 62px);
+    --day-name-height:50px;
+    --day-time-line-height:50px;
+    margin-top: 3px;
+    column-gap: 3px;
+}
+
+/* calendar*/
+.calendar{
+
+    grid-area: container;
+    height: calc(100% - 5px);
+    display: grid;
+    grid-template-columns:repeat(7, 1fr);
+    grid-template-rows: 50px 70px var(--day-name-height) auto;
+    grid-template-areas: 
+                            "left . month . year . right"
+                            "time0 time1 time2 time3 time4 time5 time6"
+                            "day0 day1 day2 day3 day4 day5 day6"
+                            "task0 task1 task2 task3 task4 task5 task6";
+
+    margin-right: 2px;
+    border: 2px solid  rgba(255,0,0 ,0.6);
+    
+}
+
+.calendar-date-month{
+    grid-area: month;
+    text-align: center;
+    font-family: "Open Sans",sans-serif;
+}
+
+
+.calendar-date-year{
+    grid-area: year;
+    text-align: center;
+    font-family: "Open Sans",sans-serif;
+}
+
+.calendar-day-name{
+    text-align: center;
+    line-height: var(--day-name-height);
+    background: transparent;
+    color: rgba(0,0,0,0.54);
+    font-size: 23px;
+}
+
+.left-arrow{
+    grid-area: left;
+    justify-self: center;
+    align-self: center;
+    transform: rotate(-180deg);
+}
+
+.right-arrow{
+    grid-area: right;
+    justify-self: center;
+    align-self: center;
+}
+
+
+.button{
+    cursor: pointer;
+    font-size: 26px;
+    font-weight: bold;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    border:1px solid transparent;
+    border-radius: 20px;
+    user-select: none;
+}
+
+.button:active{
+    background-color:rgba(156,194,175, 0.26);
+}
+
+
+/*Times*/
+.time-0{
+    grid-area: time0;
+}
+
+.time-1{
+    grid-area: time1;
+}
+
+.time-2{
+    grid-area: time2;
+}
+
+.time-3{
+    grid-area: time3;
+}
+
+.time-4{
+    grid-area: time4;
+}
+
+.time-5{
+    grid-area: time5;
+}
+
+.time-6{
+    grid-area: time6;
+}
+
+
+/* Days*/
+.sunday{
+    grid-area: day0;
+}
+
+
+.monday{
+    grid-area: day1;
+}
+
+
+.tuesday{
+    grid-area: day2;
+}
+
+.wednesday{
+    grid-area: day3;
+}
+
+.thursday{
+    grid-area: day4;
+}
+
+.friday{
+    grid-area: day5;
+}
+
+.saturday{
+    grid-area: day6;
+}
+
+/*Tasks*/
+.tbar-0{
+    grid-area: task0;
+    border-left:none !important;
+}
+
+.tbar-1{
+    grid-area: task1;
+}
+
+.tbar-2{
+    grid-area: task2;
+}
+
+.tbar-3{
+    grid-area: task3;
+}
+
+.tbar-4{
+    grid-area: task4;
+}
+
+.tbar-5{
+    grid-area: task5;
+}
+
+.tbar-6{
+    grid-area: task6;
+    border-right:none !important;
+}
+
+.calendar-day-taskbar{
+    border-top-width: 2px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-color: rgba(255,0,0 ,0.6);
+    border-left-color: rgba(255,0,0 ,0.6);
+    border-right-color: rgba(255,0,0 ,0.6);
+    
+}
+
+
+.calendar-day-time{
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    vertical-align:middle;
+    line-height: var(--day-time-line-height);
+    border-radius: 50%;
+    align-self: center;
+    justify-self: center;
+    color: #393939;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.calendar-day-taskbar{
+    padding-left: 1px;
+}
+
+.current-day{
+    border-radius: 50%;
+    border: 2px solid red;
+}
+
+/* side-bar*/
+.side-bar{
+    grid-area: sidebar;
+    height: calc(100% - 5px);
+    margin-left: 2px;
+    border: 2px solid  rgba(255,0,0 ,0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+}
+
+.todo-list{
+    height: calc(100% - 151px);
+    list-style-type: none;
+}
+
+.todo-text{
+    align-self: center;
+    width: 145px;
+    height: 65px;
+    
+}
+
+.todo-button{
+    align-self: center;
+    width: 120px;
+    height: 40px;
+    margin-bottom:20px;
+    border-radius: 25px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #D53025;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    user-select: none;
+    transition-duration: 300ms;
+}
+.todo-button:active{
+    transform: scale(.9);
+}
+
+/*
+
+placeholder effect
+*/
+
+
+.todo-text .inp {
+  position: relative;
+  margin: auto;
+  height: 24px;
+}
+.inp .label {
+  position: absolute;
+  left: 0;
+  font-size: 16px;
+  color: #9098a9;
+  font-weight: 500;
+  transform-origin: 0 0;
+  transition: all 0.2s ease;
+}
+.inp .border {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #07f;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  transition: all 0.15s ease;
+}
+.inp input {
+  -webkit-appearance: none;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  height: 22px;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 2px solid #c8ccd4;
+  background: none;
+  border-radius: 0;
+  color: #223254;
+  transition: all 0.15s ease;
+  
+}
+.inp input:hover {
+  background: rgba(34,50,84,0.03);
+}
+.inp input:not(:placeholder-shown) + span {
+  color: #5a667f;
+  transform: translateY(-22px) scale(0.75);
+}
+.inp input:focus {
+  background: none;
+  outline: none;
+}
+.inp input:focus + span {
+  color: #07f;
+  transform: translateY(-22px) scale(0.75);
+}
+.inp input:focus + span + .border {
+  transform: scaleX(1);
+}
+
+.todo-item p{
+  white-space: pre-wrap;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: move;
+    height: auto !important;
+}
+  
+.cdk-drag-preview {
+  display: flex;
+  box-sizing: border-box;
+  border-radius: 4px;  
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  background-color: #fff;                
+    
+}
+  
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+  
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+  
+.example-box:last-child {
+  border: none;
+}
+  
+.todo-list.cdk-drop-list-dragging .todo-item:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.custom-cdk-drag-preview{
+  display: flex;
+  padding: 16px;
+  justify-content: space-around;
+  align-items: center;
+  min-width: 200px;
+  max-width: 225px;
+  font-family: 'Roboto', sans-serif;
+  max-height: 70px; 
+}
+
+.custom-mat-trash-button{
+    min-width: 36px;
+    padding: 0;
+    border-radius: 50%;
+}
+

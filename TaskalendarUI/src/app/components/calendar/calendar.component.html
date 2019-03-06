@@ -1,0 +1,238 @@
+<div class="container">
+  <div class="side-bar">
+    <mat-list cdkDropList #todoList="cdkDropList" class="todo-list" [cdkDropListData]="taskBar.todos"
+      [cdkDropListConnectedTo]="[todoList1,todoList2,todoList3,todoList4,todoList5,todoList6,todoList7]"
+      (cdkDropListDropped)="drop($event,taskBar)">
+      <mat-list-item cdkDrag class="todo-item" *ngFor="let todo of taskBar.todos" (dblclick)="edit(taskBar,todo)">
+
+        <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>
+          {{todo.todo}}</p>
+        <mat-checkbox class="example-margin" (change)="checkBoxChange(taskBar,todo)" [(ngModel)]="todo.isDone">
+        </mat-checkbox>
+        <button class="custom-mat-trash-button" (click)="deleteTodo(todo,taskBar)" mat-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+
+        <div *cdkDragPreview class="custom-cdk-drag-preview">
+          <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>{{todo.todo}}</p>
+          <mat-checkbox class="example-margin" [(ngModel)]="todo.isDone"></mat-checkbox>
+          <button class="custom-mat-trash-button" mat-button>
+            <mat-icon (click)="deleteTodo(todo,taskBar)">delete</mat-icon>
+          </button>
+        </div>
+      </mat-list-item>
+
+    </mat-list>
+
+
+    <div class="todo-text">
+      <label for="inp" class="inp">
+        <input type="text" [(ngModel)]="todoItem.todo" id="inp" (keyup.enter)="addTodo()" placeholder="&nbsp;">
+        <span class="label">Label</span>
+        <span class="border"></span>
+      </label>
+    </div>
+    <div class="todo-button" (click)="addTodo()">
+      Add New Task
+    </div>
+  </div>
+  <div class="calendar">
+    <div class="left-arrow">
+      <div class="button" id="left-button" (click)="prevWeek()">&#9658;</div>
+    </div>
+    <div class="right-arrow">
+      <div class="button" id="right-button" (click)="nextWeek()">&#9658;</div>
+    </div>
+
+    <div class="calendar-date-month">
+      <h3 #monthElement>March</h3>
+    </div>
+    <div class="calendar-date-year">
+      <h3 #yearElement>2019</h3>
+    </div>
+
+    <div id="day-0" class="calendar-day-time time-0" #day0>18</div>
+    <div id="day-1" class="calendar-day-time time-1" #day1>19</div>
+    <div id="day-2" class="calendar-day-time time-2" #day2>20</div>
+    <div id="day-3" class="calendar-day-time time-3" #day3>21</div>
+    <div id="day-4" class="calendar-day-time time-4" #day4>22</div>
+    <div id="day-5" class="calendar-day-time time-5" #day5>23</div>
+    <div id="day-6" class="calendar-day-time time-6" #day6>24</div>
+
+
+    <div class="calendar-day-name sunday">Sun</div>
+    <div class="calendar-day-name monday">Mon</div>
+    <div class="calendar-day-name tuesday">Tue</div>
+    <div class="calendar-day-name wednesday">Wed</div>
+    <div class="calendar-day-name thursday">Thu</div>
+    <div class="calendar-day-name friday">Fri</div>
+    <div class="calendar-day-name saturday">Sat</div>
+
+
+    <div class="calendar-day-taskbar tbar-0">
+
+      <mat-list cdkDropList class="todo-list" #todoList1="cdkDropList" [cdkDropListData]="taskBar1.todos"
+        [cdkDropListConnectedTo]="[todoList,todoList2,todoList3,todoList4,todoList5,todoList6,todoList7]"
+        (cdkDropListDropped)="drop($event,taskBar1)">
+
+        <mat-list-item cdkDrag class="todo-item" *ngFor="let todo of taskBar1.todos" (dblclick)="edit(taskBar1,todo)">
+          <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>{{todo.todo}}</p>
+          <mat-checkbox class="example-margin" (change)="checkBoxChange(taskBar1,todo)" [(ngModel)]="todo.isDone">
+          </mat-checkbox>
+          <button class="custom-mat-trash-button" (click)="deleteTodo(todo,taskBar1)" mat-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+          <div *cdkDragPreview class="custom-cdk-drag-preview">
+            <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>{{todo.todo}}</p>
+            <mat-checkbox class="example-margin" [(ngModel)]="todo.isDone"></mat-checkbox>
+            <button class="custom-mat-trash-button" (click)="deleteTodo(todo,taskBar1)" mat-button>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+
+        </mat-list-item>
+      </mat-list>
+
+    </div>
+    <div class="calendar-day-taskbar tbar-1">
+      <mat-list cdkDropList class="todo-list" #todoList2="cdkDropList" [cdkDropListData]="taskBar2.todos"
+        [cdkDropListConnectedTo]="[todoList,todoList1,todoList3,todoList4,todoList5,todoList6,todoList7]"
+        (cdkDropListDropped)="drop($event,taskBar2)">
+
+        <mat-list-item cdkDrag class="todo-item" *ngFor="let todo of taskBar2.todos" (dblclick)="edit(taskBar2,todo)">
+          <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>{{todo.todo}}</p>
+          <mat-checkbox class="example-margin" (change)="checkBoxChange(taskBar2,todo)" [(ngModel)]="todo.isDone">
+          </mat-checkbox>
+          <button class="custom-mat-trash-button" (click)="deleteTodo(todo,taskBar2)" mat-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+          <div *cdkDragPreview class="custom-cdk-drag-preview">
+            <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>{{todo.todo}}</p>
+            <mat-checkbox class="example-margin" [(ngModel)]="todo.isDone"></mat-checkbox>
+            <button class="custom-mat-trash-button" (click)="deleteTodo(todo,taskBar2)" mat-button>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="calendar-day-taskbar tbar-2">
+      <mat-list cdkDropList class="todo-list" #todoList3="cdkDropList" [cdkDropListData]="taskBar3.todos"
+        [cdkDropListConnectedTo]="[todoList,todoList1,todoList2,todoList4,todoList5,todoList6,todoList7]"
+        (cdkDropListDropped)="drop($event,taskBar3)">
+
+        <mat-list-item cdkDrag class="todo-item" *ngFor="let todo of taskBar3.todos" (dblclick)="edit(taskBar3,todo)" >
+          <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>{{todo.todo}}</p>
+          <mat-checkbox class="example-margin" (change)="checkBoxChange(taskBar3,todo)" [(ngModel)]="todo.isDone">
+          </mat-checkbox>
+          <button class="custom-mat-trash-button" (click)="deleteTodo(todo,taskBar3)" mat-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+          <div *cdkDragPreview class="custom-cdk-drag-preview">
+            <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>{{todo.todo}} </p>
+            <mat-checkbox class="example-margin" [(ngModel)]="todo.isDone"></mat-checkbox>
+            <button class="custom-mat-trash-button" (click)="deleteTodo(todo,taskBar3)" mat-button>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+
+        </mat-list-item>
+      </mat-list>
+
+    </div>
+    <div class="calendar-day-taskbar tbar-3">
+      <mat-list cdkDropList class="todo-list" #todoList4="cdkDropList" [cdkDropListData]="taskBar4.todos"
+        [cdkDropListConnectedTo]="[todoList,todoList1,todoList2,todoList3,todoList5,todoList6,todoList7]"
+        (cdkDropListDropped)="drop($event,taskBar4)">
+
+        <mat-list-item cdkDrag class="todo-item" *ngFor="let todo of taskBar4.todos" (dblclick)="edit(taskBar4,todo)">
+          <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>{{todo.todo}}</p>
+          <mat-checkbox class="example-margin" (change)="checkBoxChange(taskBar4,todo)" [(ngModel)]="todo.isDone">
+          </mat-checkbox>
+          <button class="custom-mat-trash-button" (click)="deleteTodo(todo,taskBar4)" mat-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+          <div *cdkDragPreview class="custom-cdk-drag-preview">
+            <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>{{todo.todo}}</p>
+            <mat-checkbox class="example-margin" [(ngModel)]="todo.isDone"></mat-checkbox>
+            <button class="custom-mat-trash-button" (click)="deleteTodo(todo,taskBar4)" mat-button>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="calendar-day-taskbar tbar-4">
+      <mat-list cdkDropList class="todo-list" #todoList5="cdkDropList" [cdkDropListData]="taskBar5.todos"
+        [cdkDropListConnectedTo]="[todoList,todoList1,todoList2,todoList3,todoList4,todoList6,todoList7]"
+        (cdkDropListDropped)="drop($event,taskBar5)">
+
+        <mat-list-item cdkDrag class="todo-item" *ngFor="let todo of taskBar5.todos" (dblclick)="edit(taskBar5,todo)">
+          <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>{{todo.todo}}</p>
+          <mat-checkbox class="example-margin" (change)="checkBoxChange(taskBar5,todo)" [(ngModel)]="todo.isDone">
+          </mat-checkbox>
+          <button class="custom-mat-trash-button" (click)="deleteTodo(todo,taskBar5)" mat-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+          <div *cdkDragPreview class="custom-cdk-drag-preview">
+            <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>{{todo.todo}}</p>
+            <mat-checkbox class="example-margin" [(ngModel)]="todo.isDone"></mat-checkbox>
+            <button class="custom-mat-trash-button" (click)="deleteTodo(todo,taskBar5)" mat-button>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="calendar-day-taskbar tbar-5">
+      <mat-list cdkDropList class="todo-list" #todoList6="cdkDropList" [cdkDropListData]="taskBar6.todos"
+        [cdkDropListConnectedTo]="[todoList,todoList1,todoList2,todoList3,todoList4,todoList5,todoList7]"
+        (cdkDropListDropped)="drop($event,taskBar6)">
+
+        <mat-list-item cdkDrag class="todo-item" *ngFor="let todo of taskBar6.todos" (dblclick)="edit(taskBar6,todo)">
+          <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>{{todo.todo}}</p>
+          <mat-checkbox class="example-margin" (change)="checkBoxChange(taskBar6,todo)" [(ngModel)]="todo.isDone">
+          </mat-checkbox>
+          <button class="custom-mat-trash-button" (click)="deleteTodo(todo,taskBar6)" mat-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+          <div *cdkDragPreview class="custom-cdk-drag-preview">
+            <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>{{todo.todo}}</p>
+            <mat-checkbox class="example-margin" [(ngModel)]="todo.isDone"></mat-checkbox>
+            <button class="custom-mat-trash-button" (click)="deleteTodo(todo,taskBar6)" mat-button>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="calendar-day-taskbar tbar-6">
+      <mat-list cdkDropList class="todo-list" #todoList7="cdkDropList" [cdkDropListData]="taskBar7.todos"
+        [cdkDropListConnectedTo]="[todoList,todoList1,todoList2,todoList3,todoList4,todoList5,todoList6]"
+        (cdkDropListDropped)="drop($event,taskBar7)">
+
+        <mat-list-item cdkDrag class="todo-item" *ngFor="let todo of taskBar7.todos" (dblclick)="edit(taskBar7,todo)">
+          <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>{{todo.todo}}</p>
+          <mat-checkbox class="example-margin" (change)="checkBoxChange(taskBar7,todo)" [(ngModel)]="todo.isDone">
+          </mat-checkbox>
+          <button class="custom-mat-trash-button" (click)="deleteTodo(todo,taskBar7)" mat-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+
+          <div *cdkDragPreview class="custom-cdk-drag-preview">
+            <p [ngStyle]="{'text-decoration': todo.isDone ?'line-through' : 'none' }" mat-line>{{todo.todo}}</p>
+            <mat-checkbox class="example-margin" [(ngModel)]="todo.isDone"></mat-checkbox>
+            <button class="custom-mat-trash-button" (click)="deleteTodo(todo,taskBar7)" mat-button>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</div>
+<app-edit-todo #editTodoModal>
+</app-edit-todo>

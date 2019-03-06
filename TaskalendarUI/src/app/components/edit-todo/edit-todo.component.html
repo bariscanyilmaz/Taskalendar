@@ -1,0 +1,11 @@
+<div class="todo-modal" #todoModal cdkDrag>
+  <div class="todo-modal-body">
+    <mat-form-field class="example-full-width">
+      <input matInput autocomplete="off" [(ngModel)]="tempTodo" placeholder="Edit todo" >
+    </mat-form-field>
+  </div>
+  <div class="todo-modal-footer">
+    <button mat-raised-button color="warn" (click)="dismiss()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="save()" >Save</button>
+  </div>
+</div>

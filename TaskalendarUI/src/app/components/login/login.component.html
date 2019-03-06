@@ -1,0 +1,24 @@
+<div class="login-panel">
+  <div class="login-form-field">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input required type="email" [(ngModel)]="email" matInput placeholder="Email">
+      <mat-icon matSuffix>email</mat-icon>
+
+      <mat-hint *ngIf="isError">{{resultMessage}}</mat-hint>
+    </mat-form-field>
+
+  </div>
+  <div class="login-form-field">
+    <mat-form-field appearance="outline" >
+      <mat-label>Password</mat-label>
+      <input required type="password"  [(ngModel)]="password" matInput placeholder="Password">
+      <mat-icon matSuffix>lock</mat-icon>
+    </mat-form-field>
+
+  </div>
+  <div class="login-form-field">
+    <button (click)="Login()" mat-raised-button color="primary">Log In</button>
+  </div>
+
+</div>

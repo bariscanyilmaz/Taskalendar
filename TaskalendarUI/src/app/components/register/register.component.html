@@ -1,0 +1,29 @@
+<div class="register-panel">
+  <div class="register-form-field">
+    <mat-form-field appearance="outline">
+      <mat-label>Name Surname</mat-label>
+      <input required [(ngModel)]="namesurname" matInput placeholder="Placeholder">
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+
+  </div>
+  <div class="register-form-field">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input required type="email" [(ngModel)]="email" matInput placeholder="Placeholder">
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+
+  </div>
+  <div class="register-form-field">
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input required type="password" [(ngModel)]="password" matInput placeholder="Placeholder">
+      <mat-icon matSuffix>lock</mat-icon>
+    </mat-form-field>
+  </div>
+  <div class="register-form-field">
+    <button (click)="Register()" mat-raised-button color="primary">Register</button>
+  </div>
+
+</div>
